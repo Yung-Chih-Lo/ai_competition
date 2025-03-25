@@ -1,3 +1,8 @@
+## 更新
+- 2025/03/26：更新 v2資料集連結 
+🔗 [Google Drive 資料下載連結](https://drive.google.com/file/d/1lOwGViIj5XKenjSgXEhBn3YjaKzlrYor/view?usp=sharing)
+- 
+
 ## 📦 環境安裝
 請先安裝必要套件：
 ```bash
@@ -68,16 +73,19 @@ root
 |-------------|---------|
 | `df2hdf.py` | 將原始 CSV 檔轉換為 HDF5 格式，**無任何預處理**。 |
 | `pca.py` | 對原始資料進行 PCA 壓縮至 200 維並儲存為新的 HDF5 檔。 |
+| `downsample.py` | 對訓練資料進行下採樣。 |
 | `predict.py` | 使用訓練好的 XGBoost 模型進行預測。 |
 | `test_train_val_distribution.py` | 分析 Train/Val/Test 資料集中飆股的分布情形。 |
 | `important_features/` | 儲存特徵重要性分析結果與圖表。 |
 | `results/` | 儲存各版本訓練模型與預測結果。 |
 | `train_XGBoost_v*.py` | 各版本的 XGBoost 模型訓練腳本。 |
 
+
 ---
 
 ## 📂 資料下載與使用
 大型檔案已上傳至 Google Drive，請從以下連結下載並解壓縮到專案目錄中對應位置：
+!!已更新 v2 資料，請看前面更新
 
 🔗 [Google Drive 資料下載連結](https://drive.google.com/drive/folders/1O41PjWAtuVImqqaxg7X8SYeK7lOgTiGC?usp=sharing)
 

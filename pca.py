@@ -4,9 +4,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
 # 1. 載入資料
-train_df = pd.read_hdf("ori_datasets/train.h5", key="data")
-val_df = pd.read_hdf("ori_datasets/val.h5", key="data")
-test_df = pd.read_hdf("ori_datasets/test.h5", key="data")
+train_df = pd.read_hdf("datasets/origin/train.h5", key="data")
+val_df = pd.read_hdf("datasets/origin/val.h5", key="data")
+test_df = pd.read_hdf("datasets/origin/test.h5", key="data")
 
 # 2. 定義數值特徵
 features = [col for col in train_df.columns if col not in ['ID', '飆股']]
@@ -35,19 +35,19 @@ test_pca = pca.transform(test_scaled)
 # 對於訓練和驗證資料，包含標籤
 train_pca_df = pd.DataFrame(train_pca)
 train_pca_df['飆股'] = train_df['飆股'].values
-train_pca_df.to_hdf("mean_pca_200_datasets/train_pca_200.h5", key="data", mode="w", format='table')
+train_pca_df.to_hdf("datasets/mean_pca_200/train_pca_200.h5", key="data", mode="w", format='table')
 
 val_pca_df = pd.DataFrame(val_pca)
 val_pca_df['飆股'] = val_df['飆股'].values
-val_pca_df.to_hdf("mean_pca_200_datasets/val_pca_200.h5", key="data", mode="w", format='table')
+val_pca_df.to_hdf("datasets/mean_pca_200/val_pca_200.h5", key="data", mode="w", format='table')
 
 # 對於測試資料，沒有標籤
 test_pca_df = pd.DataFrame(test_pca)
 test_pca_df['ID'] = test_df['ID'].values # 保留 ID
-test_pca_df.to_hdf("mean_pca_200_datasets/test_pca_200.h5", key="data", mode="w", format='table')
+test_pca_df.to_hdf("datasets/mean_pca_200/test_pca_200.h5", key="data", mode="w", format='table')
 
 # 儲存 PCA 模型為 pickle (因為 HDF5 不適合儲存 sklearn 模型)
-pd.to_pickle(pca, "mean_pca_200_datasets/pca_model.pkl")
+pd.to_pickle(pca, "datasets/mean_pca_200/pca_model.pkl")
 
 # 輸出相關資訊
 print("PCA 處理完成並已儲存為 HDF5 格式")

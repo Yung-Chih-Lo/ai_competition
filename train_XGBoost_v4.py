@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 import matplotlib.pyplot as plt
 
 # 指定版本與輸出目錄
-version = 3
+version = 4
 output_dir = os.path.join("results", f"v{version}")
 os.makedirs(output_dir, exist_ok=True)
 
@@ -45,7 +45,7 @@ params = {
 num_rounds = 500  # 訓練回合數
 
 # 定義要試驗的 scale_pos_weight 值
-scale_pos_weights = [50, 100, 150, 200]
+scale_pos_weights = [200, 210, 220]
 metrics = {}
 
 for scale_pos_weight in scale_pos_weights:
