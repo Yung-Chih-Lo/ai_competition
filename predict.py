@@ -7,10 +7,10 @@ import os
 
 # 1. 載入已訓練的模型
 model = xgb.Booster()
-model.load_model("results/v3/xgb_model.json")
+model.load_model("results/v4/xgb_model.json")
 
 # 2. 載入驗證資料集，用於尋找最佳閾值
-val_df = pd.read_hdf("ori_datasets/val.h5", key="data")
+val_df = pd.read_hdf("datasets/origin/val.h5", key="data")
 X_val = val_df.drop('飆股', axis=1)
 y_val = val_df['飆股']
 
@@ -90,7 +90,7 @@ plt.grid(True)
 plt.savefig("threshold_results/threshold_metrics.png")
 
 # 6. 使用不同閾值對測試資料進行預測
-test_df = pd.read_hdf("ori_datasets/test.h5", key="data")
+test_df = pd.read_hdf("datasets/origin/val.h5", key="data")
 test_id = test_df['ID'] if 'ID' in test_df.columns else None
 
 X_test = test_df.drop(['飆股'], axis=1, errors='ignore')
